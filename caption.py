@@ -5,13 +5,13 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.applications.vgg16 import VGG16, preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 from PIL import Image
-import pickle
+import pickle,os
 from gtts import gTTS
 from io import BytesIO
 
 # Load the trained model and tokenizer
-model_path = 'best_model.h5'
-tokenizer_path = 'tokenizer.pkl'
+model_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),'best_model.h5')
+tokenizer_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),'tokenizer.pkl')   
 
 model = load_model(model_path)
 with open(tokenizer_path, 'rb') as f:
